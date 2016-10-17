@@ -1,0 +1,152 @@
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<script src="js/jquery.js"></script>    
+<!--<script src="js/bootstrap.min.js"></script>-->
+<script src="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.js"></script>  
+
+<!--<link rel="stylesheet" href="css/bootstrap.min.css"/>-->
+<link rel="stylesheet" href="jquery.mobile-1.3.2/jquery.mobile-1.3.2.min.css"/>
+
+<style>
+    
+.ui-page .ui-header {
+    background: #00bfff ;
+}
+
+
+</style>
+
+
+</head>
+<body>
+    <div data-role="page" id="allPage"> 
+        <div data-role="header">
+            <h1 data-theme="a">JOIN</h1>
+        </div>
+        <div data-role="content">
+            <div data-role="fieldcontain">
+                <label id="labelAccount" for="acountTextId" >帳號:</label>
+                <input type="text" id="acountTextId" name="acountName" placeholder="請輸入資料(蔡長恩)"/>
+            </div>
+            
+            <div data-role="fieldcontain">
+                <label id="labelPassword" for="passwordTextId">密碼:</label>
+                <input type="password" id="passwordTextId" name="namePassword"/>
+            </div>
+            <div data-role="fieldcontain">
+                <label id="labelEmail" for="emailTextId">E-Mail:</label>
+                <input type="text" id="emailTextId" name="nameEmail"/>
+            </div>
+            
+            <div data-role = "fieldcontain">
+                <label  id="labelLastName"  for="lastNameTextId">姓氏:</label>
+                <input  type="text" id="lastNameTextId" name="lastNameName"/>
+            </div>
+            
+            <div data-role = "fieldcontain">
+                <label  id="labelFirstName"  for="firstNameTextId">名字:</label>
+                <input  type="text" id="firstNameTextId" name="firstNameName"/>
+            </div>
+            
+            <div data-role="fieldcontain">
+                <label id="labelphone" for="phoneTextId">電話:</label>
+                <input type="text" id="phoneTextId" name="namePhone"/>
+            </div>
+            <div data-role="fieldcontain">
+                <label id="labelAddress" for="addressTextId">地址:</label>
+                <input type="text" id="addressTextId"  name="nameAddress"/>
+            </div>
+            <div data-role="fieldcontain">
+                <label id="labelDate" for="dateTextId">生日:</label>
+                <input type="date" id="dateTextId"  name="nameDate" value="1988-01-01"/>
+            </div>
+
+
+            <div data-role="fieldcontain">
+                <label for="genderOnOff">性別:</label>
+                <select name="genderOnOff" id="genderOnOff" data-role="slider" data-theme="b"data-track-theme="c" >
+                    <option value="male">男性</option>
+                    <option value="female">女性</option>
+                </select>
+            </div>
+
+            <div data-role="fieldcontain">
+                <label for="age">年齡:</label>
+                <input type="range" name="age" id="age" value="20" min="0" max="100"/>
+			</div>
+			
+			
+			
+			<!--<div class="ui-field-contain">-->
+                <label for="select-native-1">學歷:</label>
+                <select name="select-native-1" id="select-native-1" style="font-size:1em;">
+                    <option name="educationOption" id="educationOptionSS" value="-1" disabled selected>請選擇:</option>
+                    <option name="educationOption" id="educationOption0" value="0">國小</option>
+                    <option name="educationOption" id="educationOption1" value="1">國中</option>
+                    <option name="educationOption" id="educationOption2" value="2">高中</option>
+                    <option name="educationOption" id="educationOption3" value="3">大學</option>
+                    <option name="educationOption" id="educationOption4" value="4">大專</option>
+                </select>
+            <!--</div>-->
+			
+			
+			
+			
+			<fieldset data-role="controlgroup" >    
+			    <legend>嗜好:</legend>
+			    <input type="checkbox" name="hobbyName"  id="hobbyId0" value="1" />
+			    <label for="hobbyId0">看電影</label>
+			    <input type="checkbox" name="hobbyName"  id="hobbyId1" value="2" />
+			    <label for="hobbyId1">聽音樂</label>
+			    <input type="checkbox" name="hobbyName"  id="hobbyId2" value="3" />
+			    <label for="hobbyId2">逛街購物</label>
+			    <input type="checkbox" name="hobbyName"  id="hobbyId3" value="4" />
+			    <label for="hobbyId3">線上購物</label>
+			</fieldset>
+			
+			<div class="ui-grid-a">
+			    <div class="ui-block-a" >
+    			    <input type = "submit" name="btnAccept" id="btnAccept" value="Accept"/>
+    			</div>
+    			<div class="ui-block-b" >
+    			    <input type = "button" name="btnCancel" id="btnCancel" value="ClearAll"/>
+    			</div>
+			</div>
+        </div> <!--content-->
+    </div><!--page-->
+    
+<script>
+    $("#btnCancel").click(function(){
+        // alert("SSSS");
+        $("input:text").prop("value","");
+        $("input:password").prop("value","");
+        //將年齡項目回復到20位置
+        $("#age").val(20).slider("refresh");
+        
+         $("#dateTextId").prop( "value" , "1988-01-01" );
+        //　將勾勾清除掉
+        $("input[type='checkbox']").removeAttr("checked").checkboxradio("refresh");
+        
+        $("#select-native-1").val(-1).selectmenu("refresh")
+    });
+    
+    
+    
+    
+    $("#btnAccept").click(function(){
+        if($("input[type='text']").val()=="" || $("input[type='password']").val()=="" || $("#select-native-1").val()==null || $( "input:checked" ).length ==0){
+            alert("請將空格盡量填寫，並將選項選擇符合您的項目。");
+        }
+        else
+        {
+            alert("謝謝您耐心的填寫，已將所有空格填寫完畢!!!")
+        }
+    })
+    
+</script>
+    
+</body>
+
+</html>
